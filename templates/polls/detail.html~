@@ -1,0 +1,10 @@
+<h3>Poll Details</h3>
+
+<table>
+<tr><td>Question</td><td>{{ poll.question }}</td><tr>
+<tr><td>Pubdate</td><td>{{ poll.pub_date}}</td></tr>
+{% if error_message %} 
+	<p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+</table>

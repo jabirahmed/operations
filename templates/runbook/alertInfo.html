@@ -1,0 +1,56 @@
+{% extends "runbook/base_generic.html" %}
+
+{% block content %}
+<style type="text/css" media="screen">
+
+td{
+	vertical-align: top;
+	word-wrap:break-word;
+}
+</style>
+
+{% if all == 0 %}
+<h3>Oncall Info</h3>
+<table width='50%'>
+{% if opsoncall.count > 0 %}
+<tr><td>Ops Oncall </td><td> <a href="{% url team_member opsoncall.0.oncall.id %}"> {{opsoncall.0.oncall }}</a></td><td>Phone</td> <td>{{opsoncall.0.oncall.mobile }}</td></tr>
+{%else%}
+<tr><td colspan=3>No Ops oncall found</td></tr>
+{%endif%}
+{% if devoncall.count > 0 %}
+<tr><td>Dev Oncall </td><td> <a href="{% url team_member devoncall.0.oncall.id %}">  {{devoncall.0.oncall }}</td><td>Phone</td> <td>{{devoncall.0.oncall.mobile }}</a></td></tr>
+{%else%}
+<tr><td colspan=3>No Dev oncall found</td></tr>
+{% endif  %}
+</table>
+<hr>
+{% autoescape off %}
+<h3>
+Alert description
+</h3>
+<table style='width:50%'>
+<tr><td>  Alert </td><td>  {{alert.alert}} </td></tr>
+<tr><td>Ops Team  </td><td> {{alert.opsteam.team_name}}</td></tr>
+<tr><td>Dev Team  </td><td> {{alert.dev_team.team_name}}</td></tr>
+<tr><td>  Description  </td><td> {{alert.desc}}</td></tr>
+<tr><td> Example  </td><td> {{alert.example}}</td></tr>
+<tr><td>  Priority  </td><td>  {{alert.priority}}</td></tr>
+<tr><td>  Time To Resolve  </td><td> {{alert.ttr}}</td></tr>
+</table>
+
+{% endautoescape %}
+{%elif alert.count == 0  %}
+<h5> No results found</h5>
+{%else%}
+<ul>
+{% 	for alertItem in alert %}
+<li>	
+<a class='links' href='{%url runbook.views.alert  alertItem.id %}'> {{alertItem.alert|title}} - {{alertItem.opsteam.team_name|title}} / {{alertItem.dev_team.team_name|title}}</a>
+</li>
+
+{% endfor%}
+</ul>
+{% 	endif %}
+
+
+{%endblock%}

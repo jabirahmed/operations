@@ -1,0 +1,13 @@
+<h1>List of alerts</h1>
+
+<table>
+<tr><th>Alert</th><th>Team name</td><th>email</th></tr>
+{% for a in alerts %}
+<tr>
+<td><a href="{% url runbook.views.alert a.id %}"> {{a.alert}}</a> </td>
+
+<td> <a href="{% url runbook.views.team a.team.id %}"> {{ encoded_name}}{{a.team.team_name}}</a> </td><td> {{a.team.team_email}}</td>
+
+</tr>
+{%endfor%}
+</table>

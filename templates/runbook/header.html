@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+			<script>
+			//	alert('as');
+			</script>
+			<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/css/style.css" />
+
+	</head>
+	<body>
+		
+<div id='wrapper'>
+	
+		<div id='header'>
+			<div id='logo'>
+				
+			</div>
+			
+			<div id='menu'>
+				<ul>
+				<li><a  href='{%url runbook.views.index  %}' href='#'>Home</a></li>
+					<li><a  href='{%url all_teams  %}' href='#'>Teams</a></li>
+					<li><a   href='{%url runbook.views.alert %}'>Alerts</a></li>
+					<li><a  href='{%url runbook.views.team_member %}'>Members</a></li>
+					<li><a  href='{%url runbook.views.runbook_list %}'>Runbooks</a></li>
+					<li><a  href='{%url runbook.views.oncall_list %}'>Oncall</a></li>
+				</ul>
+			 
+			</div>
+		</div>
+	<div id='inner'>
+		<div id='splash'>
+			<img src="{{STATIC_URL}}/images/knight.jpg" height="130px" width="960px">
+		</div>
+			
+	
+
+

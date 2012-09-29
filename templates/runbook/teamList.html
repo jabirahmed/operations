@@ -1,0 +1,30 @@
+{% extends "runbook/base_generic.html" %}
+<div class="box col1">
+{% block content %}
+
+{% if members == 0 %}
+<h2>All Teams</h2>
+<table width='100%' style='text-align:left'>
+	<tr><th>Team name </th><th>Manager</th><th>Email</th><tr>
+{% for teamItem in team %}
+<tr><td><a href="{%url runbook.views.teams teamItem.id %}">{{teamItem.team_name}} </a></td><td>	{{teamItem.team_manager}}</td><td>{{teamItem.team_email}}</td><tr>
+{% endfor%}
+</table>
+{%else%}
+
+<h2>Members of the Team</h2>
+
+<table style='width:100%;text-align:left'>
+	<tr><th>Team Name/Manager</th><th>Designation</th><th>First Name</th><th>Last Name </th><th>Skype </th><th>Mobile</th><th>Email </th><th>Landline </th></tr>
+
+{% for teamItem in team %}
+	<tr><td>{{teamItem.team.team_name}} / {{teamItem.team.team_manager}} </td><td>{{teamItem.designation}}</td><td>{{teamItem.first_name}}</td> <td>{{teamItem.last_name}}</td> <td>{{teamItem.skypeid}}</td><td>{{teamItem.mobile}}</td><td>{{teamItem.emailid}}</td>
+		<td>{{teamItem.landline}}</td></tr>
+{% endfor%}
+</table>
+
+{%endif%}
+ {%endblock%}
+
+</div>
+<div class="box col2">as</div>

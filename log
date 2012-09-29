@@ -1,0 +1,264 @@
+jabira@ergw4001:~/release/oldjars$ ivory entity -type process -delete -name FETL-click-enhancer-ifd
+lhr1/FETL-click-enhancer-ifd(process) removed successfully (KILLED in ENGINE)
+uj1/FETL-click-enhancer-ifd(process) removed successfully (KILLED in ENGINE)
+ua2/FETL-click-enhancer-ifd(process) removed successfully (KILLED in ENGINE)
+FETL-click-enhancer-ifd(process) removed successfully (KILLED in ENGINE)
+jabira@ergw4001:~/release/oldjars$ 
+
+jabira@ergw4001:~/release/oldjars$ ivory entity -type feed -delete -name FETL-ClickRC-IFD
+lhr1/FETL-ClickRC-IFD(feed) removed successfully 
+uj1/FETL-ClickRC-IFD(feed) removed successfully 
+ua2/FETL-ClickRC-IFD(feed) removed successfully 
+FETL-ClickRC-IFD(feed) removed successfully (KILLED in ENGINE)
+
+jabira@ergw4001:~/release/oldjars$ ivory entity -type feed -delete -name FETL-ClickEnhance-IFD
+lhr1/FETL-ClickEnhance-IFD(feed) removed successfully (KILLED in ENGINE)
+uj1/FETL-ClickEnhance-IFD(feed) removed successfully (KILLED in ENGINE)
+ua2/FETL-ClickEnhance-IFD(feed) removed successfully (KILLED in ENGINE)
+FETL-ClickEnhance-IFD(feed) removed successfully (KILLED in ENGINE)
+jabira@ergw4001:~/release/oldjars$ 
+
+jabira@ergw4001:~/release/oldjars$ ll
+total 1792
+drwxr-xr-x 2 jabira users   4096 2012-09-24 10:38 ./
+drwxr-xr-x 3 jabira users   4096 2012-09-24 10:30 ../
+-rw-r--r-- 1 jabira users    301 2012-09-24 10:38 clickenhancer.properties
+-rw-r--r-- 1 jabira users   1581 2012-09-24 10:32 FETL-ClickEnhance-IFD.feed
+-rw-r--r-- 1 jabira users   1608 2012-09-24 10:31 FETL-click-enhancer-ifd.proccess
+-rw-r--r-- 1 jabira users   1700 2012-09-24 10:32 FETL-ClickRC-IFD.feed
+-rw-r--r-- 1 jabira users 574264 2012-09-24 10:29 io-lib-0.4-SNAPSHOT.jar.lhr1
+-rw-r--r-- 1 jabira users 602373 2012-09-24 10:30 io-lib-0.4-SNAPSHOT.jar.ua2
+-rw-r--r-- 1 jabira users 602373 2012-09-24 10:30 io-lib-0.4-SNAPSHOT.jar.uj1
+-rw-r--r-- 1 jabira users     89 2012-09-24 10:34 nns
+-rw-r--r-- 1 jabira users   2542 2012-09-24 10:36 workflow.xml
+
+
+fetl@ergw4001:~/release/oldjars$ ivory entity -type feed -submitAndSchedule -file minutely-clickrc-hosted.xml
+lhr1/Submit successful (feed) FETL-ClickRC-Hosted
+uj1/Submit successful (feed) FETL-ClickRC-Hosted
+ua2/Submit successful (feed) FETL-ClickRC-Hosted
+lhr1/FETL-ClickRC-Hosted(feed) scheduled successfully
+uj1/FETL-ClickRC-Hosted(feed) scheduled successfully
+ua2/FETL-ClickRC-Hosted(feed) scheduled successfully
+
+fetl@ergw4001:~/release/oldjars$ ivory entity -type feed -submitAndSchedule -file minutely-clickrc-house.xml
+lhr1/Submit successful (feed) FETL-ClickRC-House
+uj1/Submit successful (feed) FETL-ClickRC-House
+ua2/Submit successful (feed) FETL-ClickRC-House
+lhr1/FETL-ClickRC-House(feed) scheduled successfully
+uj1/FETL-ClickRC-House(feed) scheduled successfully
+ua2/FETL-ClickRC-House(feed) scheduled successfully
+
+fetl@ergw4001:~/release/oldjars$ ivory entity -type feed -submitAndSchedule -file minutely-clickrc-ifd.xml
+lhr1/Submit successful (feed) FETL-ClickRC-IFD
+uj1/Submit successful (feed) FETL-ClickRC-IFD
+ua2/Submit successful (feed) FETL-ClickRC-IFD
+lhr1/FETL-ClickRC-IFD(feed) scheduled successfully
+uj1/FETL-ClickRC-IFD(feed) scheduled successfully
+ua2/FETL-ClickRC-IFD(feed) scheduled successfully
+
+fetl@ergw4001:~/release/oldjars$ ivory entity -type feed -submitAndSchedule -file minutely-NonNetworkClickRC.xml
+lhr1/Submit successful (feed) FETL-NonNetworkClickRC
+uj1/Submit successful (feed) FETL-NonNetworkClickRC
+ua2/Submit successful (feed) FETL-NonNetworkClickRC
+lhr1/FETL-NonNetworkClickRC(feed) scheduled successfully
+uj1/FETL-NonNetworkClickRC(feed) scheduled successfully
+ua2/FETL-NonNetworkClickRC(feed) scheduled successfully
+
+
+
+jabira@ergw4001:~/release/oldjars$ for i in `cat nns`;  do   sudo -u fetl hadoop fs -rmr hdfs://$i/$p ;sudo -u fetl  hadoop fs -put ~/io-lib-0.4-SNAPSHOT.jar hdfs://$i/$p  ; done
+12/09/24 11:06:06 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+Moved to trash: hdfs://ruby-nn.grid.ua2.inmobi.com/projects/localdc/cbp/hbase-impression-cleanup/lib/io-lib-0.4-SNAPSHOT.jar
+12/09/24 11:06:11 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+12/09/24 11:06:14 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+Moved to trash: hdfs://topaz-nn.grid.uj1.inmobi.com/projects/localdc/cbp/hbase-impression-cleanup/lib/io-lib-0.4-SNAPSHOT.jar
+12/09/24 11:06:16 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+12/09/24 11:06:19 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+Moved to trash: hdfs://emerald-nn.grid.lhr1.inmobi.com/projects/localdc/cbp/hbase-impression-cleanup/lib/io-lib-0.4-SNAPSHOT.jar
+12/09/24 11:06:20 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+jabira@ergw4001:~/release/oldjars$ p=/projects/localdc/cbp/click-enhancer/lib/io-lib-0.4-SNAPSHOT.jarjabira@ergw4001:~/release/oldjars$ for i in `cat nns`;  do   sudo -u fetl hadoop fs -rmr hdfs://$i/$p ;sudo -u fetl  hadoop fs -put ~/io-lib-0.4-SNAPSHOT.jar hdfs://$i/$p  ; done
+12/09/24 11:06:47 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+Moved to trash: hdfs://ruby-nn.grid.ua2.inmobi.com/projects/localdc/cbp/click-enhancer/lib/io-lib-0.4-SNAPSHOT.jar
+12/09/24 11:06:50 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+12/09/24 11:06:56 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+Moved to trash: hdfs://topaz-nn.grid.uj1.inmobi.com/projects/localdc/cbp/click-enhancer/lib/io-lib-0.4-SNAPSHOT.jar
+12/09/24 11:06:58 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+12/09/24 11:07:01 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+Moved to trash: hdfs://emerald-nn.grid.lhr1.inmobi.com/projects/localdc/cbp/click-enhancer/lib/io-lib-0.4-SNAPSHOT.jar
+12/09/24 11:07:02 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+jabira@ergw4001:~/release/oldjars$ p=/projects/localdc/cbp/click-enhancer-deferred/lib/io-lib-0.4-SNAPSHOT.jar
+jabira@ergw4001:~/release/oldjars$ for i in `cat nns`;  do   sudo -u fetl hadoop fs -rmr hdfs://$i/$p ;sudo -u fetl  hadoop fs -put ~/io-lib-0.4-SNAPSHOT.jar hdfs://$i/$p  ; done
+12/09/24 11:07:25 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+Moved to trash: hdfs://ruby-nn.grid.ua2.inmobi.com/projects/localdc/cbp/click-enhancer-deferred/lib/io-lib-0.4-SNAPSHOT.jar
+12/09/24 11:07:30 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+12/09/24 11:07:33 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+Moved to trash: hdfs://topaz-nn.grid.uj1.inmobi.com/projects/localdc/cbp/click-enhancer-deferred/lib/io-lib-0.4-SNAPSHOT.jar
+12/09/24 11:07:36 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+12/09/24 11:07:38 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+Moved to trash: hdfs://emerald-nn.grid.lhr1.inmobi.com/projects/localdc/cbp/click-enhancer-deferred/lib/io-lib-0.4-SNAPSHOT.jar
+12/09/24 11:07:39 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+jabira@ergw4001:~/release/oldjars$ p=/projects/localdc/cbp/rc-conversion/lib/io-lib-0.4-SNAPSHOT.jar
+jabira@ergw4001:~/release/oldjars$ for i in `cat nns`;  do   sudo -u fetl hadoop fs -rmr hdfs://$i/$p ;sudo -u fetl  hadoop fs -put ~/io-lib-0.4-SNAPSHOT.jar hdfs://$i/$p  ; done
+12/09/24 11:07:45 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+Moved to trash: hdfs://ruby-nn.grid.ua2.inmobi.com/projects/localdc/cbp/rc-conversion/lib/io-lib-0.4-SNAPSHOT.jar
+12/09/24 11:07:48 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+12/09/24 11:07:52 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+Moved to trash: hdfs://topaz-nn.grid.uj1.inmobi.com/projects/localdc/cbp/rc-conversion/lib/io-lib-0.4-SNAPSHOT.jar
+12/09/24 11:07:54 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+12/09/24 11:07:57 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+Moved to trash: hdfs://emerald-nn.grid.lhr1.inmobi.com/projects/localdc/cbp/rc-conversion/lib/io-lib-0.4-SNAPSHOT.jar
+12/09/24 11:07:58 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+jabira@ergw4001:~/release/oldjars$ 
+
+
+
+jabira@ergw4001:~/release/oldjars$ pwd
+/home/jabira/release/oldjars
+
+
+jabira@ergw4001:~/release/oldjars$ pwd
+/home/jabira/release/oldjars
+
+
+jabira@ergw4001:~/release/oldjars$ hadoop fs -lsr /projects/localdc/cbp/click-enhancer-nonNetwork/
+12/09/24 11:15:57 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib
+-rw-r--r--   3 fetl supergroup        301 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/clickenhancer.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:14 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     262239 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/libthrift-0.5.0-cdh.jar
+-rw-r--r--   3 fetl supergroup       2542 2012-09-24 10:37 /projects/localdc/cbp/click-enhancer-nonNetwork/workflow.xml
+(reverse-i-search)`o': hadoop fs -lsr /projects/localdc/cbp/click-enhancer-nonNetw^Ck/
+jabira@ergw4001:~/release/oldjars$ for i in `cat nns`;  do  hadoop fs -lsr hdfs://$i/projects/localdc/cbp/click-enhancer-nonNetwork/;done12/09/24 11:16:23 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib
+-rw-r--r--   3 fetl supergroup        301 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/clickenhancer.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:14 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     262239 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/libthrift-0.5.0-cdh.jar
+-rw-r--r--   3 fetl supergroup       2542 2012-09-24 10:37 /projects/localdc/cbp/click-enhancer-nonNetwork/workflow.xml
+12/09/24 11:16:25 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib
+-rw-r--r--   3 fetl supergroup        301 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/clickenhancer.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:14 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     262239 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/libthrift-0.5.0-cdh.jar
+-rw-r--r--   3 fetl supergroup       2542 2012-09-24 10:37 /projects/localdc/cbp/click-enhancer-nonNetwork/workflow.xml
+12/09/24 11:16:27 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib
+-rw-r--r--   3 fetl supergroup        301 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/clickenhancer.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:14 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     262239 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/libthrift-0.5.0-cdh.jar
+-rw-r--r--   3 fetl supergroup       2542 2012-09-24 10:37 /projects/localdc/cbp/click-enhancer-nonNetwork/workflow.xml
+jabira@ergw4001:~/release/oldjars$
+
+
+
+
+all libs
+-----------
+
+jabira@ergw4001:~/release/oldjars$ for i in `cat nns`;  do echo $i;echo ; hadoop fs -lsr hdfs://$i/projects/localdc/cbp/|grep lib;done
+ruby-nn.grid.ua2.inmobi.com
+
+12/09/24 11:17:54 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:06 /projects/localdc/cbp/click-enhancer/lib
+-rw-r--r--   3 fetl supergroup        213 2012-09-17 13:50 /projects/localdc/cbp/click-enhancer/lib/clickenhancer.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:06 /projects/localdc/cbp/click-enhancer/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     262239 2012-08-02 14:46 /projects/localdc/cbp/click-enhancer/lib/libthrift-0.5.0-cdh.jar
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:07 /projects/localdc/cbp/click-enhancer-deferred/lib
+-rw-r--r--   3 fetl supergroup        172 2012-09-17 13:49 /projects/localdc/cbp/click-enhancer-deferred/lib/clickenhancer.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:07 /projects/localdc/cbp/click-enhancer-deferred/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     262239 2012-08-02 14:46 /projects/localdc/cbp/click-enhancer-deferred/lib/libthrift-0.5.0-cdh.jar
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib
+-rw-r--r--   3 fetl supergroup        301 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/clickenhancer.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:14 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     262239 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/libthrift-0.5.0-cdh.jar
+drwxr-xr-x   - fetl supergroup          0 2012-09-07 07:10 /projects/localdc/cbp/clickrc-replication/lib
+-rw-r--r--   3 fetl supergroup      81984 2012-08-02 16:26 /projects/localdc/cbp/clickrc-replication/lib/hadoop-distcp-0.1-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     602373 2012-09-07 07:10 /projects/localdc/cbp/clickrc-replication/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup      12293 2012-08-02 16:26 /projects/localdc/cbp/clickrc-replication/lib/replicator-0.4-SNAPSHOT.jar
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:06 /projects/localdc/cbp/hbase-impression-cleanup/lib
+-rw-r--r--   3 fetl supergroup         57 2012-08-02 14:46 /projects/localdc/cbp/hbase-impression-cleanup/lib/hbasecleanup.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:06 /projects/localdc/cbp/hbase-impression-cleanup/lib/io-lib-0.4-SNAPSHOT.jar
+drwxr-xr-x   - fetl supergroup          0 2012-09-17 10:16 /projects/localdc/cbp/lib
+-rw-r--r--   3 fetl supergroup        168 2012-09-17 10:16 /projects/localdc/cbp/lib/clickenhancer.properties
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:07 /projects/localdc/cbp/rc-conversion/lib
+-rw-r--r--   3 fetl supergroup        410 2012-08-02 14:46 /projects/localdc/cbp/rc-conversion/lib/driver.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:07 /projects/localdc/cbp/rc-conversion/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     262239 2012-08-02 14:46 /projects/localdc/cbp/rc-conversion/lib/libthrift-0.5.0-cdh.jar
+topaz-nn.grid.uj1.inmobi.com
+
+12/09/24 11:17:57 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:06 /projects/localdc/cbp/click-enhancer/lib
+-rw-r--r--   3 fetl supergroup        213 2012-09-24 09:53 /projects/localdc/cbp/click-enhancer/lib/clickenhancer.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:06 /projects/localdc/cbp/click-enhancer/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     262239 2012-08-02 14:46 /projects/localdc/cbp/click-enhancer/lib/libthrift-0.5.0-cdh.jar
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:07 /projects/localdc/cbp/click-enhancer-deferred/lib
+-rw-r--r--   3 fetl supergroup        168 2012-09-07 07:10 /projects/localdc/cbp/click-enhancer-deferred/lib/clickenhancer.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:07 /projects/localdc/cbp/click-enhancer-deferred/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     262239 2012-08-02 14:46 /projects/localdc/cbp/click-enhancer-deferred/lib/libthrift-0.5.0-cdh.jar
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib
+-rw-r--r--   3 fetl supergroup        301 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/clickenhancer.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:14 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     262239 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/libthrift-0.5.0-cdh.jar
+drwxr-xr-x   - fetl supergroup          0 2012-09-07 07:10 /projects/localdc/cbp/clickrc-replication/lib
+-rw-r--r--   3 fetl supergroup      81984 2012-08-02 16:27 /projects/localdc/cbp/clickrc-replication/lib/hadoop-distcp-0.1-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     602373 2012-09-07 07:10 /projects/localdc/cbp/clickrc-replication/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup      12293 2012-08-02 16:27 /projects/localdc/cbp/clickrc-replication/lib/replicator-0.4-SNAPSHOT.jar
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:06 /projects/localdc/cbp/hbase-impression-cleanup/lib
+-rw-r--r--   3 fetl supergroup         57 2012-08-02 14:46 /projects/localdc/cbp/hbase-impression-cleanup/lib/hbasecleanup.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:06 /projects/localdc/cbp/hbase-impression-cleanup/lib/io-lib-0.4-SNAPSHOT.jar
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:07 /projects/localdc/cbp/rc-conversion/lib
+-rw-r--r--   3 fetl supergroup        410 2012-08-02 14:46 /projects/localdc/cbp/rc-conversion/lib/driver.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:07 /projects/localdc/cbp/rc-conversion/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     262239 2012-08-02 14:46 /projects/localdc/cbp/rc-conversion/lib/libthrift-0.5.0-cdh.jar
+emerald-nn.grid.lhr1.inmobi.com
+
+12/09/24 11:18:04 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:07 /projects/localdc/cbp/click-enhancer/lib
+-rw-r--r--   3 fetl supergroup        213 2012-08-24 10:23 /projects/localdc/cbp/click-enhancer/lib/clickenhancer.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:07 /projects/localdc/cbp/click-enhancer/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     262239 2012-08-07 18:34 /projects/localdc/cbp/click-enhancer/lib/libthrift-0.5.0-cdh.jar
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:07 /projects/localdc/cbp/click-enhancer-deferred/lib
+-rw-r--r--   3 fetl supergroup        172 2012-08-10 10:40 /projects/localdc/cbp/click-enhancer-deferred/lib/clickenhancer.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:07 /projects/localdc/cbp/click-enhancer-deferred/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     262239 2012-08-07 14:56 /projects/localdc/cbp/click-enhancer-deferred/lib/libthrift-0.5.0-cdh.jar
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib
+-rw-r--r--   3 fetl supergroup        301 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/clickenhancer.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:14 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     262239 2012-09-24 11:15 /projects/localdc/cbp/click-enhancer-nonNetwork/lib/libthrift-0.5.0-cdh.jar
+drwxr-xr-x   - fetl supergroup          0 2012-08-07 14:56 /projects/localdc/cbp/clickrc-replication/lib
+-rw-r--r--   3 fetl supergroup      81984 2012-08-07 14:56 /projects/localdc/cbp/clickrc-replication/lib/hadoop-distcp-0.1-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     574264 2012-08-07 14:56 /projects/localdc/cbp/clickrc-replication/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup      12293 2012-08-07 14:56 /projects/localdc/cbp/clickrc-replication/lib/replicator-0.4-SNAPSHOT.jar
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:06 /projects/localdc/cbp/hbase-impression-cleanup/lib
+-rw-r--r--   3 fetl supergroup         57 2012-08-07 14:56 /projects/localdc/cbp/hbase-impression-cleanup/lib/hbasecleanup.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:06 /projects/localdc/cbp/hbase-impression-cleanup/lib/io-lib-0.4-SNAPSHOT.jar
+drwxr-xr-x   - fetl supergroup          0 2012-09-24 11:07 /projects/localdc/cbp/rc-conversion/lib
+-rw-r--r--   3 fetl supergroup        410 2012-08-07 14:55 /projects/localdc/cbp/rc-conversion/lib/driver.properties
+-rw-r--r--   3 fetl supergroup     622447 2012-09-24 11:07 /projects/localdc/cbp/rc-conversion/lib/io-lib-0.4-SNAPSHOT.jar
+-rw-r--r--   3 fetl supergroup     262239 2012-08-07 14:55 /projects/localdc/cbp/rc-conversion/lib/libthrift-0.5.0-cdh.jar
+jabira@ergw4001:~/release/oldjars$ 
+
+
+jabira@ergw4001:~/release/oldjars$ ivory entity -type feed -submitAndSchedule -file minutely-nonNetwork-clickenhance.xml 
+
+lhr1/Submit successful (feed) FETL-ClickEnhance-NonNetwork
+uj1/Submit successful (feed) FETL-ClickEnhance-NonNetwork
+ua2/Submit successful (feed) FETL-ClickEnhance-NonNetwork
+lhr1/FETL-ClickEnhance-NonNetwork(feed) scheduled successfully
+uj1/FETL-ClickEnhance-NonNetwork(feed) scheduled successfully
+ua2/FETL-ClickEnhance-NonNetwork(feed) scheduled successfully
+
+
+2012-09-24T11:30Z
+
+
+jabira@ergw4001:~/release/oldjars$ ivory entity -type process -submitAndSchedule -file click-enhancer-nonNetwork.xml 
+lhr1/Submit successful (process) FETL-click-enhancer-nonNetwork
+uj1/Submit successful (process) FETL-click-enhancer-nonNetwork
+ua2/Submit successful (process) FETL-click-enhancer-nonNetwork
+lhr1/FETL-click-enhancer-nonNetwork(process) scheduled successfully
+uj1/FETL-click-enhancer-nonNetwork(process) scheduled successfully
+ua2/FETL-click-enhancer-nonNetwork(process) scheduled successfully
+
+
+

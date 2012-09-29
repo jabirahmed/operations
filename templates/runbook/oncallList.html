@@ -1,0 +1,23 @@
+{% extends "runbook/base_generic.html" %}
+
+{% block content %}
+
+{% if oncall.count == 0 %}
+
+<h2>No oncalls found</h2>
+{% else %}
+
+<table width='100%' style='text-align:left'>
+	<tr><th>Team name </th><th>Oncall Person</th><th>Skype </th><th>Oncall Type</th><th>Mobile</th><th>Start Date</th><th>End Date</th><tr>
+{% for oc in oncall %}
+<tr>
+	<td><a href="{%url specific_team 1 %}"> {{oc.team.team_name}} </a></td>
+	<td><a href="{% url team_member oc.oncall.id  %}">{{oc.oncall.full_name}} </a></td>
+	<td><a href="skype:{{oc.oncall.skypeid }}?chat">{{oc.oncall.skypeid }} </a></td>
+	<td>{{oc.get_oncall_type_display}}</td><td>{{oc.oncall.mobile }}</td>
+	<td>{{oc.start_date}}</td><td>{{oc.end_date}}</td><tr>
+{% endfor%}
+</table>
+{%endif%}
+{%endblock%}
+ 

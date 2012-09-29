@@ -1,0 +1,20 @@
+{% extends "runbook/base_generic.html" %}
+<div class="box col1">
+{% block content %}
+
+
+<h2>All Runbooks</h2>
+<table width='100%' style='text-align:left'>
+	<tr><th>Filter</th><th>Team</th><th>Description</th><th>url</th><th>Link</th><tr>
+{% for r in runbooks %}
+<tr><td><a href='{% url runbooks_by_team   r.team.id %}'><img src="{{STATIC_URL}}/images/filter.png" height='20px'></a></td><td><a href="{%url specific_team  r.team.id  %}">{{r.team.team_name}} </a></td><td>	{{r.runbook_desc}}</td><td>{{r.runbook_url|slice:":60"}}..</td><td><a href="{{r.runbook_url}}" target="blank">Link</a></td><tr>
+{% endfor%}
+</table>
+
+
+ 
+
+ {%endblock%}
+
+</div>
+<div class="box col2">as</div>

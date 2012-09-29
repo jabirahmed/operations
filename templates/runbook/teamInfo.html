@@ -1,0 +1,19 @@
+{% extends "runbook/base_generic.html" %}
+{% block content %}
+{% if team_name != 0 %}
+
+<h2>Members of {{team_name.team_name}}</h2>
+{% else %}
+<h2>List of all members</h2>
+{%endif%}
+<table style='width:100%;text-align:left'>
+	<tr><th>Team Name</th><th>Details</th><th>First Name</th><th>Last Name </th><th>Skype </th><th>Mobile</th><th>Email </th><th>Landline </th></tr>
+
+{% for member in team%}
+
+<tr><td><a href="{%url specific_team member.team.id%}">{{member.team.team_name}}</a></td><td><a href="{%url team_member member.id %}">Details</a></td><td>{{member.first_name}}</td> <td>{{member.last_name}}</td> <td>{{member.skypeid}}</td><td>{{member.mobile}}</td><td>{{member.emailid}}</td>
+		<td>{{member.landline}}</td></tr>
+{% endfor%}
+</table>
+
+ {%endblock%}

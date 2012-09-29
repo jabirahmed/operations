@@ -1,0 +1,50 @@
+<style>
+				body{
+						margin: 0px;
+						padding: 0px;
+						color:#600000;
+						
+				}
+				div{
+					
+					height:30%;
+				}
+				.context {
+					/*height: 100px;*/
+					margin-left: 24px;
+					padding-top: 30px;
+				
+					
+					
+				}
+				div.header a:visited,a:link{
+						color:#FFFFCC
+					
+				}
+				.header{
+					background-color:#600000 ;
+					color:#FFFFCC;
+					margin: 0px;
+					height: '20%' ;
+					padding:0px;
+					text-align: center;
+					
+				}
+				.search{
+					color:red;
+					text-align:center;
+				}
+				input{
+					margin: 5px;
+				}
+				table.menu {
+					width:100%;
+				}
+				table.menu a:visited,a:link{
+					color:#FFFFCC
+				}
+				links a:link,a:visited{
+					color:#600000;
+					font-size: 100px;
+				}
+			</style>

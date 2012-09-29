@@ -1,0 +1,27 @@
+{% extends "runbook/base_generic.html" %}
+{% block content %}
+
+
+<div class='box col1'>
+Enter alert keywords (or) nagios check name <br>
+<form method='GET' action='{% url search_alert %}'>
+<input  name="alert_text" type=text size=40/> <br>
+<input type='submit'/ value='Search Runbook'>
+</form>
+</div>
+
+<div class='box col2'>
+Enter a geeks name  <br>
+<form method='GET' action='{% url search_team_member %}'>
+<input  name="geek_name" type=text size=40/> <br>
+<input type='submit'/ value='Search Geek'>
+</form>
+</div>
+
+{%endblock%}
+
+
+
+
+<!-- img src="{{ STATIC_URL }}images/hi.png" / -->
+
